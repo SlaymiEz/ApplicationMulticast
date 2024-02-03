@@ -54,9 +54,9 @@ public class Cube extends JLabel implements KeyListener{
                 int b = p & 0xff;
                 if (r != 0 && g != 0 && b != 0){
                     a = 255;
-                    r = 255;
-                    g = 0;
-                    b = 0;
+                    r = red;
+                    g = green;
+                    b = blue;
                     p = (a <<24) | (r << 16) | (g << 8) | b;
                     img.setRGB(col, row, p);
                 }
