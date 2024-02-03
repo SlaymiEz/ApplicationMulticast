@@ -1,16 +1,18 @@
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Cube extends JLabel{
+public class Cube extends JLabel implements KeyListener{
     BufferedImage img = null;
     File f = null;
     Image CubeImage = null;
     int red, green, blue;
+    Boolean up = false, down = false, right = false, left = false;
     public Cube(String name, int red, int green, int blue){
         this.red = red;
         this.green = green;
@@ -55,5 +57,42 @@ public class Cube extends JLabel{
                 }
             }
         }
+    }
+    private void keysIn(KeyEvent key){
+        switch (key.getKeyChar()) {
+            case 'z': up = true;
+              break;
+            case 'q': left = true;
+                break;
+            case 's': down = true;
+                break;
+            case 'd': right = true;
+                break;
+            default : break;   
+        }
+    }
+    private void keysOut(KeyEvent key){
+        switch (key.getKeyChar()) {
+            case 'z': up = false;
+                break;
+            case 'q': left = false;
+                break;
+            case 's': down = false;
+                break;
+            case 'd': right = false;
+                break;
+            default : break;
+        }
+    }
+    @Override
+    public void keyTyped(java.awt.event.KeyEvent e) {}
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keysIn(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        keysOut(e);   
     }
 }
