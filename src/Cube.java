@@ -35,7 +35,7 @@ public class Cube extends JLabel implements KeyListener{
     
     private void changeImage(){
         try {
-            f = new File("lib/WhiteCube.png");
+            f = new File("lib/Images/WhiteCube.png");
             img = ImageIO.read(f);
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
