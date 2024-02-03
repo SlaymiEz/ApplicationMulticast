@@ -7,20 +7,24 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Cube extends JLabel{
-    Color c;
     BufferedImage img = null;
     File f = null;
-    Image CubeImage;
+    Image CubeImage = null;
     int red, green, blue;
-    public Cube(Color c, String name, int red, int green, int blue){
-        this.c = c;
+    public Cube(String name, int red, int green, int blue){
         this.red = red;
         this.green = green;
         this.blue = blue;
         this.setName(name);
+        imageManagement();
+    }
+
+    private void imageManagement(){
         changeImage();
+        CubeImage = new ImageIcon(img).getImage();
+        CubeImage = CubeImage.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         this.setBounds(0, 0, 100, 100);
-        
+        setIcon(new ImageIcon(CubeImage));
     }
     
     private void changeImage(){
@@ -51,12 +55,5 @@ public class Cube extends JLabel{
                 }
             }
         }
-
-        //try {
-        //    f = new File("lib/Images/TempCube.png");
-        //    ImageIO.write(img, "png", f);
-        //} catch (IOException e) {
-        //    System.out.println(e.getLocalizedMessage());
-        //}
     }
 }
