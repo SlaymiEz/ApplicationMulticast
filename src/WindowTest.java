@@ -3,6 +3,8 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Cube.Cube;
+
 public class WindowTest extends JFrame {
     JFrame frame = null;
     JPanel panel = null;
