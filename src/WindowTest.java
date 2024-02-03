@@ -57,7 +57,7 @@ public class WindowTest extends JFrame implements KeyListener{
         frame.setSize(800, 600);
         frame.setResizable(false);
         frame.add(panel);
-        frame.setVisible(true); // Garder en dernier pour être sûr que ça marche
+        frame.setVisible(true); // Garder en dernier pour être sûr que ça marche EZEZEZEZ
     }
     private void keysIn(KeyEvent key){
         switch (key.getKeyChar()) {

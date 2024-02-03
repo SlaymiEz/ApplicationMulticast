@@ -12,6 +12,9 @@ public class Cube extends JLabel implements KeyListener{
     File f = null;
     Image CubeImage = null;
     int red, green, blue;
+    int x = 0;
+    int y = 0;
+    Thread t = new Thread(() -> {movement();});
     Boolean up = false, down = false, right = false, left = false;
     public Cube(String name, int red, int green, int blue){
         this.red = red;
@@ -19,6 +22,7 @@ public class Cube extends JLabel implements KeyListener{
         this.blue = blue;
         this.setName(name);
         imageManagement();
+        t.start();
     }
 
     private void imageManagement(){
@@ -82,6 +86,26 @@ public class Cube extends JLabel implements KeyListener{
             case 'd': right = false;
                 break;
             default : break;
+        }
+    }
+    private void keysActions(){
+        if (up == true) y-=5;
+        if (left == true) x-=5;
+        if (down == true) y+=5;
+        if (right == true) x+=5;
+    }
+    private void updatePosition(){
+        keysActions();
+        setLocation(x, y);
+    }
+    private void movement(){
+        while (true) {
+            try {
+            Thread.sleep(16);
+            updatePosition();
+            } catch (Exception e){
+                System.out.println(e.getLocalizedMessage());
+            } 
         }
     }
     @Override
