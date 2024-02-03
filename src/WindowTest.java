@@ -1,14 +1,15 @@
-import java.awt.Image;
 import java.awt.Color;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Cube.Cube;
+import Cube.CubeClient;
 
 public class WindowTest extends JFrame {
     JFrame frame = null;
     JPanel panel = null;
-    Cube ClientCube = null;
+    CubeClient clientCube = null;
     Image BCubeI = null;
     Boolean up = false, down = false, right = false, left = false; // GARDER SINON CA PLANTE NULLPOINTER WTF
     int x = 0;
@@ -24,8 +25,8 @@ public class WindowTest extends JFrame {
         try {
             frame = new JFrame("Game");
             panel = new JPanel();
-            ClientCube = new Cube("ClientCube", 150, 100, 255);
-            frame.addKeyListener(ClientCube);
+            clientCube = new CubeClient("BlueCube", 255, 0, 0);
+            frame.addKeyListener(clientCube);
         } catch (Exception e) {
             log(e.getLocalizedMessage());
         }
@@ -33,7 +34,7 @@ public class WindowTest extends JFrame {
 
     private void panelConfig() {
         panel.setBackground(new Color(255, 255, 255)); //Blanc
-        panel.add(ClientCube);
+        panel.add(clientCube);
         panel.setLayout(null);
     }
 

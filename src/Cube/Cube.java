@@ -1,22 +1,21 @@
 package Cube;
 import java.awt.Image;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
-public class Cube extends JLabel implements KeyListener{
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Cube extends JLabel{
     BufferedImage img = null;
     File f = null;
     Image CubeImage = null;
     int red, green, blue;
     int x = 0;
     int y = 0;
-    Thread t = new Thread(() -> {movement();});
+    Thread t = new Thread(() -> {update();});
     Boolean up = false, down = false, right = false, left = false;
     public Cube(String name, int red, int green, int blue){
         this.red = red;
@@ -28,14 +27,14 @@ public class Cube extends JLabel implements KeyListener{
     }
 
     private void imageManagement(){
-        changeImage();
+        createImage();
         CubeImage = new ImageIcon(img).getImage();
         CubeImage = CubeImage.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         this.setBounds(0, 0, 100, 100);
         setIcon(new ImageIcon(CubeImage));
     }
     
-    private void changeImage(){
+    private void createImage(){
         try {
             f = new File("lib/Images/DefCube.png");
             img = ImageIO.read(f);
@@ -64,61 +63,12 @@ public class Cube extends JLabel implements KeyListener{
             }
         }
     }
-    private void keysIn(KeyEvent key){
-        switch (key.getKeyChar()) {
-            case 'z': up = true;
-              break;
-            case 'q': left = true;
-                break;
-            case 's': down = true;
-                break;
-            case 'd': right = true;
-                break;
-            default : break;   
-        }
-    }
-    private void keysOut(KeyEvent key){
-        switch (key.getKeyChar()) {
-            case 'z': up = false;
-                break;
-            case 'q': left = false;
-                break;
-            case 's': down = false;
-                break;
-            case 'd': right = false;
-                break;
-            default : break;
-        }
-    }
-    private void keysActions(){
-        if (up == true) y-=5;
-        if (left == true) x-=5;
-        if (down == true) y+=5;
-        if (right == true) x+=5;
-    }
-    private void updatePosition(){
-        keysActions();
-        setLocation(x, y);
-    }
-    private void movement(){
-        while (true) {
-            try {
-            Thread.sleep(16);
-            updatePosition();
-            } catch (Exception e){
-                System.out.println(e.getLocalizedMessage());
-            } 
-        }
-    }
-    @Override
-    public void keyTyped(java.awt.event.KeyEvent e) {}
-    @Override
-    public void keyPressed(KeyEvent e) {
-        keysIn(e);
-    }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        keysOut(e);   
+    public void update(){
+        //to complete
     }
 }
+    
+    
+    
+    
