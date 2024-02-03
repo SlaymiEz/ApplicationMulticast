@@ -28,7 +28,7 @@ public class WindowTest extends JFrame implements KeyListener{
             frame = new JFrame("Game");
             label = new JLabel("Je suis un Label", JLabel.CENTER);
             panel = new JPanel();
-            BCube = new JLabel("BlueCube");
+            BCube = new Cube("BlueCube", 255, 0, 0);
             BCubeI = new ImageIcon("lib/images/BlueCube.png").getImage();
             frame.addKeyListener(this);
         } catch (Exception e) {
