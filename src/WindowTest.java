@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 public class WindowTest extends JFrame {
     JFrame frame = null;
     JPanel panel = null;
-    Cube BCube = null;
+    Cube ClientCube = null;
     Image BCubeI = null;
     Boolean up = false, down = false, right = false, left = false; // GARDER SINON CA PLANTE NULLPOINTER WTF
     int x = 0;
@@ -22,8 +22,8 @@ public class WindowTest extends JFrame {
         try {
             frame = new JFrame("Game");
             panel = new JPanel();
-            BCube = new Cube("BlueCube", 255, 0, 0);
-            frame.addKeyListener(BCube);
+            ClientCube = new Cube("ClientCube", 150, 100, 255);
+            frame.addKeyListener(ClientCube);
         } catch (Exception e) {
             log(e.getLocalizedMessage());
         }
@@ -31,7 +31,7 @@ public class WindowTest extends JFrame {
 
     private void panelConfig() {
         panel.setBackground(new Color(255, 255, 255)); //Blanc
-        panel.add(BCube);
+        panel.add(ClientCube);
         panel.setLayout(null);
     }
 
