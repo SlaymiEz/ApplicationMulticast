@@ -1,7 +1,8 @@
-import java.awt.*;
+import java.awt.Image;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

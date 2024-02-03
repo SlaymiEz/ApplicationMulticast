@@ -1,5 +1,7 @@
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Image;
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class WindowTest extends JFrame {
     JFrame frame = null;
