@@ -1,26 +1,32 @@
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Cube extends JLabel{
-    Color c;
+public class Cube extends JLabel implements KeyListener{
     BufferedImage img = null;
     File f = null;
-    Image CubeImage;
+    Image CubeImage = null;
     int red, green, blue;
-    public Cube(Color c, String name, int red, int green, int blue){
-        this.c = c;
+    Boolean up = false, down = false, right = false, left = false;
+    public Cube(String name, int red, int green, int blue){
         this.red = red;
         this.green = green;
         this.blue = blue;
         this.setName(name);
+        imageManagement();
+    }
+
+    private void imageManagement(){
         changeImage();
+        CubeImage = new ImageIcon(img).getImage();
+        CubeImage = CubeImage.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         this.setBounds(0, 0, 100, 100);
-        
+        setIcon(new ImageIcon(CubeImage));
     }
     
     private void changeImage(){
@@ -51,12 +57,42 @@ public class Cube extends JLabel{
                 }
             }
         }
+    }
+    private void keysIn(KeyEvent key){
+        switch (key.getKeyChar()) {
+            case 'z': up = true;
+              break;
+            case 'q': left = true;
+                break;
+            case 's': down = true;
+                break;
+            case 'd': right = true;
+                break;
+            default : break;   
+        }
+    }
+    private void keysOut(KeyEvent key){
+        switch (key.getKeyChar()) {
+            case 'z': up = false;
+                break;
+            case 'q': left = false;
+                break;
+            case 's': down = false;
+                break;
+            case 'd': right = false;
+                break;
+            default : break;
+        }
+    }
+    @Override
+    public void keyTyped(java.awt.event.KeyEvent e) {}
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keysIn(e);
+    }
 
-        //try {
-        //    f = new File("lib/Images/TempCube.png");
-        //    ImageIO.write(img, "png", f);
-        //} catch (IOException e) {
-        //    System.out.println(e.getLocalizedMessage());
-        //}
+    @Override
+    public void keyReleased(KeyEvent e) {
+        keysOut(e);   
     }
 }
