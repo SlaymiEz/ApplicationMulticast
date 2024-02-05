@@ -65,7 +65,7 @@ public class Cube extends JLabel{
     }
 
     public void update(){
-        //to complete
+        //to complete UWU BAKA DESUNE
     }
 }
     

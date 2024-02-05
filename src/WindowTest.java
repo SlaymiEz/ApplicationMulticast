@@ -25,7 +25,7 @@ public class WindowTest extends JFrame {
         try {
             frame = new JFrame("Game");
             panel = new JPanel();
-            clientCube = new CubeClient("BlueCube", 255, 0, 0);
+            clientCube = new CubeClient("BlueCube", 0, 0, 255);
             frame.addKeyListener(clientCube);
         } catch (Exception e) {
             log(e.getLocalizedMessage());
