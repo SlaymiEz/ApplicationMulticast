@@ -10,3 +10,5 @@ The goal of this project is to make an optimised server creating instances of cu
 Or simplier just to test a bad multicast server (really bad). 
 
 PS : le repo il est privé donc le README il sert à r.
+
+PPS : JTE BZ ÇA SE VOIT TU SAIS PAS QUE PS ÇA VIENT DU LATIN ÇA VEUT DIRE POST SCRIPTUM
